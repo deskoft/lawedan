@@ -12,11 +12,6 @@ class CmdConfigureJobTerminal(Command):
     help_category = "job terminal"
     locks = "cmd:perm(Builders)"
 
-    def send_input(self, caller, prompt, user_input):
-        self.target.print_terminal_text(f"%s %s" % (prompt, user_input))
-        self.target.receive_input(user_input, administrator=True)
-        caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
-
     def func(self):
         syntax_err = "Please refer to |lchelp configure-job-terminal|lthelp configure-job-terminal|le for more information on how to use this command."
 
@@ -44,4 +39,8 @@ class CmdConfigureJobTerminal(Command):
 
         self.terminal = target
         self.terminal.print_terminal_text("Successfully authorized as TERMINAL ADMINISTRATOR...")
-        get_input(caller, ">> ", self.send_input)
+        input = yield(">> ")
+        self.target.print_terminal_text(f"%s %s" % (prompt, user_input))
+        self.target.receive_input(user_input, administrator=True)
+
+        caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
