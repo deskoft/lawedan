@@ -22,6 +22,9 @@ class CmdConfigureJobTerminal(Command):
             caller.msg(syntax_err)
             return
 
+        args = self.args.split(" ")
+        caller.msg(str(args))
+
         target = self.args.strip()
         target = caller.search(target)
 
