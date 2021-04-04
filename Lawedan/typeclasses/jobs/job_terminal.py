@@ -26,7 +26,7 @@ class JobTerminal(Object):
         terminal_to_print = self.db.terminal_text
 
         if len(terminal_to_print) > 10:
-            terminal_to_print = terminal_to_print[-9:]
+            terminal_to_print = terminal_to_print[-20:]
 
         return '|/'.join(terminal_to_print)
 
