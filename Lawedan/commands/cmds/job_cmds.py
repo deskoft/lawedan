@@ -40,6 +40,7 @@ class CmdConfigureJobTerminal(Command):
         self.terminal = target
         self.terminal.print_terminal_text("Successfully authorized as TERMINAL ADMINISTRATOR...")
         input = yield(">> ")
+        caller.cmd("You typed " + input)
         self.target.receive_input(input, administrator=True)
 
         caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
