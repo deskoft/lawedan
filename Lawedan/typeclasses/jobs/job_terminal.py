@@ -25,5 +25,5 @@ class JobTerminal(Object):
 
     def return_appearance(self, looker):
         terminal_text = self.get_terminal_text()
-        table = evtable.EvTable("JOB TERMINAL", table=[[self.db.terminal_text]], border="cells")
+        table = evtable.EvTable("JOB TERMINAL", table=[[terminal_text]], border="cells")
         return str(table)
