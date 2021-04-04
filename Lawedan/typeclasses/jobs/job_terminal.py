@@ -40,6 +40,7 @@ class JobTerminal(Object):
         if kwargs.get("administrator"):
             administrator = True
 
+        self.print_terminal_text(">> " + raw_input)
         cmd = raw_input.split(' ')
 
         if len(raw_input) >= 3:
@@ -49,7 +50,6 @@ class JobTerminal(Object):
                     self.print_terminal_text(f"Set |cORG NAME|n to |G{' '.join(cmd[2:])}|n.")
 
 
-        self.print_terminal_text(">> " + raw_input)
 
     def print_terminal_text(self, line):
         if self.db.terminal_text == None:
