@@ -37,4 +37,4 @@ class CmdConfigureJobTerminal(Command):
             return
 
 
-        caller.execute_cmd("walks up to the %s and types on it.", (target.name,))
+        caller.execute_cmd("emote walks up to the %s and types on it.", (target.name,))
