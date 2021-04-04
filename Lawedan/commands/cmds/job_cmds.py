@@ -25,7 +25,7 @@ class CmdConfigureJobTerminal(Command):
         args = self.args.split(" ")
         caller.msg(str(args))
 
-        target = self.args.strip()
+        target = args[1]
         target = caller.search(target)
 
         if not target:
@@ -38,9 +38,15 @@ class CmdConfigureJobTerminal(Command):
             caller.msg(syntax_err)
             return
 
+        if not len(args) > 1:
+            caller.msg("You need to also write a command.")
+            caller.msg(syntax_err)
+            return
+
+        cmd = ' '.join(args[1:])
+
         self.terminal = target
-        self.terminal.print_terminal_text("Successfully authorized as TERMINAL ADMINISTRATOR...")
-        cmd = yield(">> ")
+        self.terminal.print_terminal_text("Writing a command in ADMINISTRATOR MODE...")
         caller.cmd("You typed " + cmd)
         self.target.receive_input(cmd, administrator=True)
 
