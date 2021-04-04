@@ -6,7 +6,7 @@ class CmdConfigureJobTerminal(Command):
     This is the command to configure job terminals, available to both the owner as well as builders
 
     Usage:
-        configure-job-terminal <terminal>
+        configure-job-terminal <terminal> <command>
     """
     key = "configure-job-terminal"
     help_category = "job terminal"
@@ -21,10 +21,8 @@ class CmdConfigureJobTerminal(Command):
         if not self.args:
             caller.msg(syntax_err)
             return
-        args = self.args.split(' ')
 
         target = self.args.strip()
-
         target = caller.search(target)
 
         if not target:
@@ -39,8 +37,8 @@ class CmdConfigureJobTerminal(Command):
 
         self.terminal = target
         self.terminal.print_terminal_text("Successfully authorized as TERMINAL ADMINISTRATOR...")
-        input = yield(">> ")
-        caller.cmd("You typed " + input)
-        self.target.receive_input(input, administrator=True)
+        cmd = yield(">> ")
+        caller.cmd("You typed " + cmd)
+        self.target.receive_input(cmd, administrator=True)
 
         caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
