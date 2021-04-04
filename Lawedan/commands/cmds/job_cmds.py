@@ -5,7 +5,7 @@ class CmdConfigureJobTerminal(Command):
     This is the command to configure job terminals, available to both the owner as well as builders
 
     Usage:
-        configure-job-terminal <terminal> <setting> <value>
+        configure-job-terminal <terminal>
     """
     key = "configure-job-terminal"
     help_category = "job terminal"
@@ -22,15 +22,9 @@ class CmdConfigureJobTerminal(Command):
             return
         args = self.args.split(' ')
 
-        args = self.args.split(' ')
-        if len(args) < 3:
-            caller.msg(syntax_err)
-            return
+        target = self.args.strip()
 
-        targ = args[0]
-        setting = args[1]
-        value = args[2]
-        target = caller.search(targ)
+        target = caller.search(target)
 
         if not target:
             caller.msg("Cannot find job terminal.")
