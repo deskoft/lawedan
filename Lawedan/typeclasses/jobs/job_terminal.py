@@ -29,6 +29,14 @@ class JobTerminal(Object):
         table = evtable.EvTable("JOB TERMINAL", table=[[terminal_text]], border="cells")
         return str(table)
 
+    def receive_input(self, input, **kwargs):
+        administrator = False
+        if kwargs.get("administrator"):
+            administrator = True
+
+        raw_cmd = input.split(" ")
+        if len(raw_cmd) <= 0:
+            self.print_terminal_text("Please write a command.")
 
     def print_terminal_text(self, line):
         self.db.terminal_text.append(line)
