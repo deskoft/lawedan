@@ -1,5 +1,6 @@
 from typeclasses.objects import Object
 from evennia.utils import evtable
+from commands.cmdsets import jobs_cmdset
 
 class JobTerminal(Object):
     """
@@ -8,6 +9,7 @@ class JobTerminal(Object):
 
     def at_object_creation(self):
         self.tags.add("job-terminal")
+        self.cmdset.add(jobs_cmdset.JobTerminalCmdSet)
 
     def get_organization_name(self):
         if self.db.org_name is None:
