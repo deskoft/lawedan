@@ -9,7 +9,7 @@ class JobTerminal(Object):
 
     def at_object_creation(self):
         self.tags.add("job-terminal")
-        self.cmdset.add(jobs_cmdset.JobTerminalCmdSet)
+        self.cmdset.add(jobs_cmdset.JobTerminalCmdSet, permanent=True)
 
     def get_organization_name(self):
         if self.db.org_name is None:
