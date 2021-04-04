@@ -20,4 +20,4 @@ class JobTerminal(Object):
         if self.db.terminal_text is None:
             self.db.terminal_text = "Welcome to the Job Terminal v.0.1."
         table = evtable.EvTable("JOB TERMINAL", table=[[self.db.terminal_text]], border="cells")
-        return table
+        return "Test."
