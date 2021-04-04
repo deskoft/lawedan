@@ -43,7 +43,7 @@ class CmdConfigureJobTerminal(Command):
             caller.msg(syntax_err)
             return
 
-        cmd = ' '.join(args[1:])
+        cmd = ' '.join(args[2:])
 
         target.print_terminal_text("Writing a command in ADMINISTRATOR MODE...")
         caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
