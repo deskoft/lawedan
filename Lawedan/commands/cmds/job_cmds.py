@@ -1,4 +1,5 @@
 from evennia import Command
+from evennia.utils.evmenu import get_input
 
 class CmdConfigureJobTerminal(Command):
     """
@@ -42,6 +43,6 @@ class CmdConfigureJobTerminal(Command):
 
         self.terminal = target
         self.terminal.print_terminal_text("Successfully authorized as TERMINAL ADMINISTRATOR...")
-        get_input(caller, ">> ", send_input)
+        get_input(caller, ">> ", self.send_input)
 
         caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
