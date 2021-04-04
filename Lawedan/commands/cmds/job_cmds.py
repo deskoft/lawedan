@@ -38,7 +38,7 @@ class CmdConfigureJobTerminal(Command):
             caller.msg(syntax_err)
             return
 
-        if not len(args) > 1:
+        if not len(args) > 2:
             caller.msg("You need to also write a command.")
             caller.msg(syntax_err)
             return
