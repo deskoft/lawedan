@@ -1,4 +1,5 @@
 from typeclasses.objects import Object
+from evennia.utils import evtable
 
 class JobTerminal(Object):
     """
@@ -14,3 +15,9 @@ class JobTerminal(Object):
             self.db.ranks[rank_num] = {}
         
         self.db.ranks[rank_num]["name"] = new_name
+
+    def return_appearance(self, looker):
+        if self.db.terminal_text is None:
+            self.db.terminal_text = "Welcome to the Job Terminal v.0.1."
+        table = evtable.EvTable("JOB TERMINAL", table=[[self.db.terminal_text]], border="cells")
+        return table
