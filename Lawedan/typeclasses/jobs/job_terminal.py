@@ -56,6 +56,7 @@ class JobTerminal(Object):
             self.db.terminal_text = []
 
         self.db.terminal_text.append(line)
+        self.cmd("emote emits an elecronic beep.")
 
     def return_appearance(self, looker):
         terminal = self.get_terminal()
