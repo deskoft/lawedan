@@ -47,7 +47,7 @@ class CmdConfigureJobTerminal(Command):
 
         self.terminal = target
         self.terminal.print_terminal_text("Writing a command in ADMINISTRATOR MODE...")
-        caller.cmd("You typed " + cmd)
+        caller.msg("You typed " + cmd)
         self.target.receive_input(cmd, administrator=True)
 
         caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
