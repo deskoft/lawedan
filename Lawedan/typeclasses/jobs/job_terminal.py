@@ -39,6 +39,9 @@ class JobTerminal(Object):
             self.print_terminal_text("Please write a command.")
 
     def print_terminal_text(self, line):
+        if self.db.terminal_text == None:
+            self.db.terminal_text = []
+
         self.db.terminal_text.append(line)
 
     def return_appearance(self, looker):
