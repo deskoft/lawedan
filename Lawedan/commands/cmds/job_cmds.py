@@ -31,8 +31,9 @@ class CmdConfigureJobTerminal(Command):
             caller.msg(syntax_err)
             return
 
-
         if not "job-terminal" in target.tags.all():
             caller.msg("This is not a job terminal.")
             caller.msg(syntax_err)
             return
+
+        caller.execute_cmd("walks up to the %s and types on it.", (target.name,))
