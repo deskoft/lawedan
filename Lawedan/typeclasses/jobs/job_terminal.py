@@ -22,7 +22,13 @@ class JobTerminal(Object):
     def get_terminal_text(self):
         if self.db.terminal_text is None:
             self.db.terminal_text = ["JOB TERMINAL initiatied...", f"This terminal belongs to %s..." % (self.get_organization_name().upper(),)]
-        return '|/'.join(self.db.terminal_text)
+
+        terminal_to_print = self.db.terminal_text
+
+        if len(terminal_to_print) > 10:
+            terminal_to_print = terminal_to_print[-9:]
+
+        return '|/'.join(terminal_to_print)
 
     def get_terminal(self):
         terminal_text = self.get_terminal_text()
