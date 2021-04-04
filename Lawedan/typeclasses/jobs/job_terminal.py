@@ -23,10 +23,10 @@ class JobTerminal(Object):
         if self.db.terminal_text is None:
             self.db.terminal_text = ["JOB TERMINAL initiatied...", f"This terminal belongs to %s..." % (self.get_organization_name().upper(),)]
 
-        terminal_to_print = self.db.terminal_text
+        if len(self.db.terminal_text) > 20:
+            del self.db.terminal_text[:20]
 
-        if len(terminal_to_print) > 10:
-            terminal_to_print = terminal_to_print[-20:]
+        terminal_to_print = self.db.terminal_text
 
         return '|/'.join(terminal_to_print)
 
@@ -48,8 +48,6 @@ class JobTerminal(Object):
                 if cmd[1].lower() == "org_name":
                     self.set_organization_name(' '.join(cmd[2:]))
                     self.print_terminal_text(f"Set |cORG NAME|n to |G{' '.join(cmd[2:])}|n.")
-
-
 
     def print_terminal_text(self, line):
         if self.db.terminal_text == None:
