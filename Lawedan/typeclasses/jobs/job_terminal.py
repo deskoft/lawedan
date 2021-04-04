@@ -7,17 +7,23 @@ class JobTerminal(Object):
     """
 
 
-    def modify_rank_name(self, rank_num, new_name):
-        if self.db.ranks is None:
-            self.db.ranks = {}
-            
-        if self.db.ranks[rank_num] is None:
-            self.db.ranks[rank_num] = {}
-        
-        self.db.ranks[rank_num]["name"] = new_name
+    def get_organization_name(self):
+        if self.db.org_name is None:
+            self.db.org_name = "Undefined"
+        return self.db.org_name
+
+    def set_organization_name(self, name:str):
+        self.db.org_name = name
+
+    def get_terminal_text(self):
+        if self.db.terminal_text is None or not isinstance(self.db.terminal_text, list):
+            self.db.terminal_text = ["JOB TERMINAL initiatied...", f"This terminal belongs to %s..." % (self.get_organization_name().upper(),)]
+        return '|/'.join(self.db.terminal_text)
+
+    def print_terminal_text(self, line):
+        self.db.terminal_text.append(line)
 
     def return_appearance(self, looker):
-        if self.db.terminal_text is None:
-            self.db.terminal_text = "Welcome to the Job Terminal v.0.1."
+        terminal_text = self.get_terminal_text()
         table = evtable.EvTable("JOB TERMINAL", table=[[self.db.terminal_text]], border="cells")
-        return "Test."
+        return str(table)
