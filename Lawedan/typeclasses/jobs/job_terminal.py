@@ -56,7 +56,7 @@ class JobTerminal(Object):
             self.db.terminal_text = []
 
         self.db.terminal_text.append(line)
-        self.location.msg_contents(f"|y* {self.name} emits an elecronic beep.|n")
+        self.location.msg_contents(f"* {self.name} emits an |yelecronic beep|n.")
 
     def return_appearance(self, looker):
         terminal = self.get_terminal()
