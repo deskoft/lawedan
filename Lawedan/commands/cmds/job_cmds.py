@@ -36,4 +36,5 @@ class CmdConfigureJobTerminal(Command):
             caller.msg(syntax_err)
             return
 
+
         caller.execute_cmd("walks up to the %s and types on it.", (target.name,))
