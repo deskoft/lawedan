@@ -20,7 +20,7 @@ class JobTerminal(Object):
         self.db.org_name = name
 
     def get_terminal_text(self):
-        if self.db.terminal_text is None or not isinstance(self.db.terminal_text, list):
+        if self.db.terminal_text is None:
             self.db.terminal_text = ["JOB TERMINAL initiatied...", f"This terminal belongs to %s..." % (self.get_organization_name().upper(),)]
         return '|/'.join(self.db.terminal_text)
 
