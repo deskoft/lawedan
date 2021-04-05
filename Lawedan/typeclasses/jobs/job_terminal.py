@@ -86,4 +86,4 @@ class JobTerminal(Object):
     def return_appearance(self, looker):
         terminal = self.get_terminal()
         return f"|cOn the terminal, you see...|n|/|/" \
-               "%s" % (terminal,)
+               "%s |/|/You can |lchelp use-job-terminal|ltuse|le this terminal." % (terminal,)
