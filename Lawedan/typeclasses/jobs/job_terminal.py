@@ -20,13 +20,13 @@ class JobTerminal(Object):
         self.db.org_name = name
 
     def get_terminal_text(self):
-        if self.db.terminal_text is None:
-            self.db.terminal_text = ["JOB TERMINAL initiatied...", f"This terminal belongs to %s..." % (self.get_organization_name().upper(),)]
+        if self.ndb.terminal_text is None:
+            self.ndb.terminal_text = ["JOB TERMINAL initiatied...", f"This terminal belongs to %s..." % (self.get_organization_name().upper(),)]
 
-        if len(self.db.terminal_text) > 20:
-            del self.db.terminal_text[:20]
-
-        terminal_to_print = self.db.terminal_text
+        if len(self.ndb.terminal_text) > 20:
+            terminal_to_print =  self.ndb.terminal_text[-20:]
+        else:
+            terminal_to_print = self.ndb.terminal_text
 
         return '|/'.join(terminal_to_print)
 
@@ -53,10 +53,10 @@ class JobTerminal(Object):
                     self.print_terminal_text(f"Set |cORG NAME|n to |G{' '.join(cmd[2:])}|n.")
 
     def print_terminal_text(self, line):
-        if self.db.terminal_text == None:
-            self.db.terminal_text = []
+        if self.ndb.terminal_text == None:
+            self.ndb.terminal_text = []
 
-        self.db.terminal_text.append(line)
+        self.ndb.terminal_text.append(line)
         self.location.msg_contents(f"* {self.name} emits an |yelecronic beep|n.")
 
     def return_appearance(self, looker):
