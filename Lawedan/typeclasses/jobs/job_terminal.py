@@ -33,7 +33,8 @@ class JobTerminal(Object):
 
     def get_terminal(self):
         terminal_text = self.get_terminal_text()
-        output = "[  ----  ]  JOB TERMINAL  [  ----  ]|/"+ terminal_text
+        output = "[  --------  ]  JOB TERMINAL  [  --------  ]|/"+ terminal_text + \
+                 "|/[  --------------------------------------  ]"
         return output
 
     def print_welcome(self):
