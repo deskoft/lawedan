@@ -33,8 +33,8 @@ class JobTerminal(Object):
 
     def get_terminal(self):
         terminal_text = self.get_terminal_text()
-        output = "|y[  --------  ]  JOB TERMINAL  [  --------  ]|/|Y"+ terminal_text + \
-                 "|/|y[  --------------------------------------  ]|n"
+        output = "|y[  --------  ]  JOB TERMINAL  [  --------  ]|/|/|/|Y"+ terminal_text + \
+                 "|/|/|/|y[  --------------------------------------  ]|n"
 
         return output
 
