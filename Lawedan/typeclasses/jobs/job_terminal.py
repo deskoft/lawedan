@@ -35,6 +35,9 @@ class JobTerminal(Object):
         table = evtable.EvTable("JOB TERMINAL", table=[[terminal_text]], border="cells")
         return str(table)
 
+    def print_welcome(self):
+        self.print_terminal_text(f"JOB TERMINAL owned by {self.get_organization_name()}...")
+
     def receive_input(self, raw_input, **kwargs):
         administrator = False
         if kwargs.get("administrator"):
