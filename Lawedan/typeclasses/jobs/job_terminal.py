@@ -1,6 +1,7 @@
 from typeclasses.objects import Object
 from evennia.utils import evtable
 from commands.cmdsets import jobs_cmdset
+from evennia.commands.default import syscommands
 
 class JobTerminal(Object):
     """
@@ -32,8 +33,8 @@ class JobTerminal(Object):
 
     def get_terminal(self):
         terminal_text = self.get_terminal_text()
-        table = evtable.EvTable("JOB TERMINAL", table=[[terminal_text]], border="cells")
-        return str(table)
+        output = "[  ----  ]  JOB TERMINAL  [  ----  ]|/"+ terminal_text
+        return output
 
     def print_welcome(self):
         self.print_terminal_text(f"JOB TERMINAL owned by {self.get_organization_name()}...")

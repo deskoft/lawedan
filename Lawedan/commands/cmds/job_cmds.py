@@ -12,7 +12,7 @@ class CmdUseJobTerminal(Command):
     help_category = "job terminal"
 
     def func(self):
-        syntax_err = "Please refer to |lchelp use-job-terminal|lthelp configure-job-terminal|le for more information on how to use this command."
+        syntax_err = "Please refer to |lchelp use-job-terminal|lthelp use-job-terminal|le for more information on how to use this command."
 
         caller = self.caller
         terminal = self.obj
