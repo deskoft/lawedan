@@ -52,6 +52,7 @@ class JobTerminal(Object):
 
         if len(cmd) == 1:
             if cmd[0].lower() == "info":
+                self.location.msg_contents(f"* {self.name} emits a |bblue UV light|n as it scans {user.name}.")
                 if not user:
                     self.print_terminal_text("Failed to identify citizen...", error=True)
                     return
