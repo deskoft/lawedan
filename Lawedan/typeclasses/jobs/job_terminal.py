@@ -45,11 +45,18 @@ class JobTerminal(Object):
 
         user = False
         if kwargs.get("user"):
-            user = True
+            user = kwargs.get("user")
 
         self.print_terminal_text(">> " + raw_input)
         cmd = raw_input.split(' ')
 
+        if len(raw_input) == 1:
+            if cmd[0].lower() == "info":
+                if not user:
+                    self.print_terminal_text("Failed to identify citizen...", error=True)
+                    return
+                self.print_terminal_text(f"Identified citizen {user.name.upper()}...")
+                return
         if len(raw_input) >= 3:
             if cmd[0].lower() == "set":
                 if cmd[1].lower() == "org_name":
@@ -58,6 +65,7 @@ class JobTerminal(Object):
                         return
                     self.set_organization_name(' '.join(cmd[2:]))
                     self.print_terminal_text(f"Set |cORG NAME|n to |G{' '.join(cmd[2:])}|n.")
+                    return
 
     def print_terminal_text(self, line, **kwargs):
         if self.ndb.terminal_text == None:
