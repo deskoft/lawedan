@@ -8,3 +8,4 @@ class JobTerminalCmdSet(CmdSet):
     key = "JobTerminalCmdSet"
     def at_cmdset_creation(self):
         self.add(jobs.CmdConfigureJobTerminal())
+        self.add(jobs.CmdUseJobTerminal())
