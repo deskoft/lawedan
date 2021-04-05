@@ -43,21 +43,33 @@ class JobTerminal(Object):
         if kwargs.get("administrator"):
             administrator = True
 
+        user = False
+        if kwargs.get("user"):
+            user = True
+
         self.print_terminal_text(">> " + raw_input)
         cmd = raw_input.split(' ')
 
         if len(raw_input) >= 3:
             if cmd[0].lower() == "set":
                 if cmd[1].lower() == "org_name":
+                    if not administrator:
+                        self.print_terminal_text("You are not authorized to use this command.", error=True)
+                        return
                     self.set_organization_name(' '.join(cmd[2:]))
                     self.print_terminal_text(f"Set |cORG NAME|n to |G{' '.join(cmd[2:])}|n.")
 
-    def print_terminal_text(self, line):
+    def print_terminal_text(self, line, **kwargs):
         if self.ndb.terminal_text == None:
             self.ndb.terminal_text = []
 
         self.ndb.terminal_text.append(line)
-        self.location.msg_contents(f"* {self.name} emits an |yelecronic beep|n.")
+
+        beep_type = '|yelectronic beep|n'
+        if kwargs.get("error"):
+            beep_type = '|relectronic buzz|n'
+
+        self.location.msg_contents(f"* {self.name} emits an {beep_type}.")
 
     def return_appearance(self, looker):
         terminal = self.get_terminal()

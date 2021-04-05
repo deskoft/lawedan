@@ -45,7 +45,7 @@ class CmdUseJobTerminal(Command):
 
         caller.execute_cmd(f"emote walks up to the %s and types on it." % (target.name,))
         caller.msg("You type: '|c" + cmd.upper() + "|n' in the terminal.")
-        target.receive_input(cmd, administrator=False)
+        target.receive_input(cmd, administrator=False, user=caller)
 
 class CmdConfigureJobTerminal(Command):
     """
