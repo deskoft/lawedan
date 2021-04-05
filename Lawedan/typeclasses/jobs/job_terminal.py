@@ -50,7 +50,7 @@ class JobTerminal(Object):
         self.print_terminal_text(">> " + raw_input)
         cmd = raw_input.split(' ')
 
-        if len(cmd) == 2:
+        if len(cmd) == 1:
             if cmd[0].lower() == "info":
                 if not user:
                     self.print_terminal_text("Failed to identify citizen...", error=True)
