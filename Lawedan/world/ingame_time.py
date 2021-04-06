@@ -4,6 +4,8 @@ from typeclasses.characters import Character
 def at_sunrise():
     for character in Character.objects.all():
         #This will handle giving characters energy every day.
+        if not character.db.energy:
+            character.db.energy = 0
         character.db.energy = character.db.energy + 10
 
 def start_sunrise_event():
