@@ -34,3 +34,20 @@ class Character(DefaultCharacter):
         if self.db.age and self.db.gender:
             return True
         return False
+
+    def set_last_name(self, last_name):
+        self.db.last_name = last_name
+        self.msg(f"You have set your |ylast name|n to |g{self.db.last_name}|n.")
+
+    def has_citizenship(self):
+        return self.db.citizenship
+
+    def get_last_name(self):
+        if not self.db.last_name:
+            return False
+        return self.db.last_name
+
+    def get_dob(self):
+        if not self.db.date_of_birth:
+            return False
+        return self.db.date_of_birth
