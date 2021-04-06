@@ -33,4 +33,7 @@ class CmdUseCitizenshipTerminal(Command):
     key = "use-citizenship-terminal"
     help_category = "terminals"
     def func(self):
-        evmenu.EvMenu(self.caller, "commands.cmds.terminal_cmds", start_node="citizenship_terminal_start")
+        menu_tree = {
+            "start":citizenship_terminal_start
+        }
+        evmenu.EvMenu(self.caller, menu_tree, start_node="citizenship_terminal_start")
